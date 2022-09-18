@@ -55,7 +55,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:text='@{"Rp. " + Integer.toString(product.hargaProduct), default="Harga Produk"}'
+                android:text='@{product.price}'
                 android:textColor="#BBDBF4"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"

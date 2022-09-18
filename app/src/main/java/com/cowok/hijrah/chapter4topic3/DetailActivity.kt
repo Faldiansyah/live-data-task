@@ -15,13 +15,12 @@ class DetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
         val data = intent.extras
-        val price = "Rp. "+ data?.getInt("price").toString()
         val stock = "Stok Tersedia : "+ data?.getInt("stock").toString()
         val desc = "Deskripsi :\n\n"+ data!!.getString("desc")
 
         binding.imageDetail.setImageResource(data.getInt("image"))
         binding.namaDetail.text = data.getString("name")
-        binding.hargaDetail.text = price
+        binding.hargaDetail.text = data.getString("price")
         binding.stokDetail.text = stock
         binding.deskripsiDetail.text = desc
 
@@ -34,10 +33,10 @@ class DetailActivity : AppCompatActivity() {
                 action = Intent.ACTION_VIEW
                 val phone = "+6281342687092"
                 val data = intent.extras
-                val produk = data!!.getString("name")
-                val harga = data.getInt("price")
+                val name = data!!.getString("name")
+                val price = data.getString("price")
                 val destination = "https://api.whatsapp.com/send?phone=$phone&text=Halo, saya tertarik " +
-                        "dengan produk $produk dengan harga Rp. ${harga}. Apakah masih tersedia?"
+                        "dengan produk $name dengan harga $price. Apakah masih tersedia?"
                 setData(Uri.parse(destination))
             }
             startActivity(toWA)

@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cowok.hijrah.chapter4topic3.databinding.ItemProductBinding
+import kotlin.collections.ArrayList
 
 class ProductAdapter(var listProduct: ArrayList<Product>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     class ViewHolder(var binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root) {
@@ -16,10 +15,10 @@ class ProductAdapter(var listProduct: ArrayList<Product>): RecyclerView.Adapter<
             binding.product = itemProduct
             binding.cardProduct.setOnClickListener(object : View.OnClickListener{
                 override fun onClick(view: View?) {
-                    var bund = Bundle()
+                    val bund = Bundle()
                     bund.putInt("image", itemProduct.imgProduct)
                     bund.putString("name", itemProduct.namaProduct)
-                    bund.putInt("price", itemProduct.hargaProduct)
+                    bund.putString("price", itemProduct.price)
                     bund.putInt("stock", itemProduct.stokProduct)
                     bund.putString("desc", itemProduct.deskripsi)
                     val toDetail = Intent(view!!.context, DetailActivity::class.java)
@@ -31,7 +30,7 @@ class ProductAdapter(var listProduct: ArrayList<Product>): RecyclerView.Adapter<
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
 
