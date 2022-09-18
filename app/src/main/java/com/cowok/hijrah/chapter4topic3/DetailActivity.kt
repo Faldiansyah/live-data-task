@@ -15,11 +15,15 @@ class DetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
         val data = intent.extras
-        binding.imageDetail.setImageResource(data!!.getInt("image"))
+        val price = "Rp. "+ data?.getInt("price").toString()
+        val stock = "Stok Tersedia : "+ data?.getInt("stock").toString()
+        val desc = "Deskripsi :\n\n"+ data!!.getString("desc")
+
+        binding.imageDetail.setImageResource(data.getInt("image"))
         binding.namaDetail.text = data.getString("name")
-        binding.hargaDetail.text = data.getInt("price").toString()
-        binding.stokDetail.text = data.getInt("stock").toString()
-        binding.deskripsiDetail.text = data.getString("desc")
+        binding.hargaDetail.text = price
+        binding.stokDetail.text = stock
+        binding.deskripsiDetail.text = desc
 
         enterWhatsApp()
     }
